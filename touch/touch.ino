@@ -1,12 +1,12 @@
-#define startPin 5
-#define stoptPin 4
-#define motorPin 3
+#define startPin 2
+#define stoptPin 3
+#define motorPin 13
 
 void setup()
 {
     // initialize pin mode
-    pinMode(startPin, INPUT);
-    pinMode(stoptPin, INPUT);
+    pinMode(startPin, INPUT_PULLUP);
+    pinMode(stoptPin, INPUT_PULLUP);
     pinMode(motorPin, OUTPUT);
 
     // initialize motor
@@ -15,9 +15,9 @@ void setup()
 
 void loop()
 {
-    if( digitalRead(startPin)){
+    if( digitalRead(startPin) == 0){
         digitalWrite(motorPin, HIGH);
-    }else if( digitalRead(stoptPin) ){
+    }else if( digitalRead(stoptPin) == 0){
         digitalWrite(motorPin, LOW);
     }
 }
